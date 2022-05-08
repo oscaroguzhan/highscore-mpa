@@ -6,14 +6,20 @@ var logger = require("morgan");
 
 // lägga till layout biblioteket
 var expressLayouts = require("express-ejs-layouts");
+// pool component från pg biblioteket för att kommunicera med database
 const { Pool } = require("pg");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
+var adminRouter = require("./routes/admin");
+var searchRouter = require("./routes/search");
+var gamesRouter = require("./routes/games");
 var app = express();
 
-// create an instance object of Pool to communicate with postgres
+/* create an instance object of Pool to communicate
+with postgres pgadmin som kör in i container i docker vi har mappat 
+in port 5432 för lokala maskin 
+in i den här containern. Vi lägger den in i locals objects för att nå den globalt
+*/
 app.locals.db = new Pool({
   host: "localhost",
   user: "postgres",
@@ -34,8 +40,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-
+app.use("/admin", adminRouter);
+app.use("/search", searchRouter);
+app.use("/games", gamesRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

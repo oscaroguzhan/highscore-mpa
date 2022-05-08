@@ -1,0 +1,22 @@
+<section>
+    <h1 class="text-center">Hittade <%=Games.length %> träffar på <%= searchTerm %></h1>
+  <% Games.forEach(game => { %>
+  <div class="container">
+      <a href="/games/<%= game.title%>">
+          <div class="card mb-3">
+            <div class="card-body m-2 p-2">
+              <div class="d-flex justify-content-between">
+                  <div>
+                      <h5 class="card-title flex-start"><%= game.title %></h5>
+                      <div class="user-date d-flex">
+                        <p class="card-text"><%= game.genre %>, <%= game.release_year %></p>
+                      </div>
+                  </div>
+                    <img src="<%= game.image_url %>" class="card-text flex-end"></img>
+              </div>
+            </div>
+          </div>
+      </a>
+  </div>
+  <% }) %>
+</section>

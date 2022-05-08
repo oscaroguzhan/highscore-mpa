@@ -11,4 +11,9 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+}
+
+input#search {
+  width: 65%;
 }
