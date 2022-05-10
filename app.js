@@ -10,7 +10,7 @@ var expressLayouts = require("express-ejs-layouts");
 const { Pool } = require("pg");
 
 var indexRouter = require("./routes/index");
-var adminRouter = require("./routes/admin");
+var gamesAdminRouter = require("./routes/admin/games");
 var searchRouter = require("./routes/search");
 var gamesRouter = require("./routes/games");
 var app = express();
@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/admin", adminRouter);
+app.use("/admin/games", gamesAdminRouter);
 app.use("/search", searchRouter);
 app.use("/games", gamesRouter);
 // catch 404 and forward to error handler

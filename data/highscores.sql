@@ -7,17 +7,16 @@ CREATE TABLE game (
     image_url VARCHAR(250) NOT NULL,
     genre VARCHAR(50) NOT NULL,
     release_date DATE NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE (title)
+    url_slug VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE highscores (
     id INTEGER GENERATED ALWAYS AS IDENTITY,
-    game VARCHAR(50) NOT NULL,
+    game_id INTEGER,
     player VARCHAR(250) NOT NULL,
     score_date DATE NOT NULL,
     points INTEGER NOT NULL,
-    url_slug VARCHAR,
-    FOREIGN KEY (url_slug) REFERENCES game (title),
+    FOREIGN KEY (game_id) REFERENCES game (id),
     PRIMARY KEY (id)
 );

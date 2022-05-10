@@ -13,15 +13,18 @@
   <h2 class="text-center mt-5">Highscores</h2>
   <section class="row playersScores">
     <!-- loopa players allscore -->
-    <% highscores.forEach(({player,score_date,points}) => { %>
-    <div class="card d-flex mb-3">
-      <div class="card-body">
-        <div class="d-flex justify-content-between">
-          <p class="card-text flex-start"><%= player %>,<%= score_date %></p>
-          <p class="flex-end"><%=points%></p>
-        </div>
-      </div>
+    <!-- FIXME: jag måste kolla om jag inte har highscore när jag skapar nytt spell -->
+    <% if(highscores[0].points !== null) { %> 
+      <% highscores.forEach(({player, score_date,points})=> { %>
+    <div class="game-scores mb-3 px-3 py-3 d-flex justify-content-between">
+      <p><%= player%>, <%= score_date%></p>
+      <p><%= points%></p>
     </div>
-    <% }) %>
+    <% }) %> 
+    <% } else { %>
+    <p class="text-center">No scores yet registered</p>
+    <% } %>
   </section>
+
+  
 </div>

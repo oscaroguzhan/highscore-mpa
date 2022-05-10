@@ -1,0 +1,32 @@
+<section class="container">
+    <h1 class="my-2"><%= title %> </h1>
+
+    <!-- skapa en formulär för att lägga till nytt spel  -->
+    <!-- vi vill post tillbaka till samma url som formulär ligger på   -->
+    <form method="post" class="mx-2">
+        <div class="mb-3">
+          <label for="title" class="form-label">Titel</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="Namn">
+          
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Beskrivning</label>
+          <textarea name="description" id="description" cols="30" rows="10" class="form-control"> </textarea>
+        </div>
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Bild</label>
+            <input type="text" name="image_url" class="form-control" placeholder="Ange bild">
+        </div>
+        <select name="genre" class="form-select mb-3">
+            <option selected>Välj genre</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="arcade">Arcade</option>
+            <option value="shooter">Shooter</option>
+          </select>
+          <div class="mb-3">
+            <label for="release_date" class="form-label">Lanseringsdatum</label>
+            <input type="text" name="release_date" class="form-control" >
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Lägg till</button>
+      </form>
+</section>
