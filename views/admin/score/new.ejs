@@ -1,0 +1,36 @@
+<section class="container">
+    <div class="row">
+      <h1 class="ml-5">NYTT HIGHSCORE</h1>
+  
+      <!-- skapa en formulär för att lägga till nytt spel  -->
+      <!-- vi vill post tillbaka till samma url som formulär ligger på   -->
+      <form method="post" class="mx-2">
+        <div class="mb-3">
+          <!-- skapa dynamisk game titlar -->
+          <label for="game_title" class="form-label">Spel</label>
+          <select name="game_title" id="game_title" class="form-control">
+            <% games.forEach(game => { %>
+              <option value="<%= game.title %>">
+                <%= game.title %>
+              </option>
+           <% }) %>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="player" class="form-label">Spelare</label>
+          <input type="text" name="player" id="player" class="form-control"> </input>
+        </div>
+        <div class="mb-3">
+            <label for="score-date" class="form-label">Datum</label>
+            <input type="text" name="score-date" class="form-control" placeholder="Datum(YYYY-MM-DD)">
+        </div>
+        
+          <div class="mb-3">
+            <label for="points" class="form-label">Poäng</label>
+            <input type="number" name="points" class="form-control" >
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Lägg till</button>
+      </form>
+    </div>
+  </section>
+  

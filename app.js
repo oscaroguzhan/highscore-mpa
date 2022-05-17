@@ -11,6 +11,7 @@ const { Pool } = require("pg");
 
 var indexRouter = require("./routes/index");
 var gamesAdminRouter = require("./routes/admin/games");
+var scoreAdminRouter = require("./routes/admin/score");
 var searchRouter = require("./routes/search");
 var gamesRouter = require("./routes/games");
 var app = express();
@@ -40,7 +41,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+
 app.use("/admin/games", gamesAdminRouter);
+
+app.use("/admin/score", scoreAdminRouter);
 app.use("/search", searchRouter);
 app.use("/games", gamesRouter);
 // catch 404 and forward to error handler

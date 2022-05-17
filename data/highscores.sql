@@ -11,6 +11,7 @@ CREATE TABLE game (
     PRIMARY KEY (id)
 );
 
+-- with game_id refererar vi till game tabellen
 CREATE TABLE highscores (
     id INTEGER GENERATED ALWAYS AS IDENTITY,
     game_id INTEGER,

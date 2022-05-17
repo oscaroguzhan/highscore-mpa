@@ -2,17 +2,32 @@
 <section>
   <% Highscores.forEach(highscore => { %>
     <a href="/games/<%=highscore.url_slug %>">
+
   <div class="container">
     <div class="card">
+      <!-- check if there is exisiting score  -->
+      <% if(highscore.points != null) { %>
+        
+        <div class="card-body m-2 p-2">
+          <div class="game-score d-flex justify-content-between">
+            <h5 class="card-title flex-start"><%= highscore.title %></h5>
+            <p class="card-text flex-end"><%= highscore.points %></p>
+          </div>
+          <div class="user-date d-flex">
+            <p class="card-text"><%= highscore.player %>, <%= highscore.score_date %></p>
+            
+          </div>
+     <% } else { %>
       <div class="card-body m-2 p-2">
         <div class="game-score d-flex justify-content-between">
           <h5 class="card-title flex-start"><%= highscore.title %></h5>
-          <p class="card-text flex-end"><%= highscore.points %></p>
+          <p class="card-text flex-end">No score yet</p>
         </div>
         <div class="user-date d-flex">
           <p class="card-text"><%= highscore.player %>, <%= highscore.score_date %></p>
           
         </div>
+     <% } %>
       </div>
     </div>
   </div>

@@ -18,9 +18,9 @@ router.get("/:urlSlug", async function (req, res) {
             highscores.points,
     TO_CHAR (highscores.score_date, 'DD-MM-YYYY') AS score_date
        FROM game
- INNER JOIN highscores
-         ON highscores.game_id = game.id
-      WHERE game.url_slug ILIKE '%' || $1 || '%'
+ LEFT JOIN highscores
+         ON game.id = highscores.game_id 
+      WHERE game.url_slug = $1
       ORDER BY highscores.points DESC
         LIMIT 10;
 
@@ -29,14 +29,15 @@ router.get("/:urlSlug", async function (req, res) {
   const result = await db.query(sql, [urlSlug]);
 
   // destructring från result.rows and put in a game object
-  const { title, genre, description, release_date, image_url, url_slug } = result.rows[0];
+  const { title, genre, description, release_date, image_url, url_slug } =
+    result.rows[0];
   const game = {
     title: title,
     genre: genre,
     description: description,
     release_date: release_date,
     image_url: image_url,
-    url_slug:url_slug
+    url_slug: url_slug,
   };
   const highscores = result.rows.map((highscore) => ({
     player: highscore.player,
