@@ -8,14 +8,16 @@ var logger = require("morgan");
 var expressLayouts = require("express-ejs-layouts");
 // pool component från pg biblioteket för att kommunicera med database
 const { Pool } = require("pg");
+const cors = require("cors");
 
 var indexRouter = require("./routes/index");
+
 var gamesAdminRouter = require("./routes/admin/games");
 var scoreAdminRouter = require("./routes/admin/score");
 var searchRouter = require("./routes/search");
 var gamesRouter = require("./routes/games");
 var gamesApiRouter = require("./routes/api/games");
-const cors = require("cors");
+
 var app = express();
 
 /* create an instance object of Pool to communicate
