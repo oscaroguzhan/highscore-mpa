@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
 });
 
 // GET http://localhost:3000/admin/score/new
-// här vi gör en ny get anrop för att navigera till sidan admin/score/new
+// här vi gör en ny get anrop för att navigera till 
+// sidan admin/score/new
 router.get("/new", async (req, res) => {
   const { db } = req.app.locals;
 
@@ -36,11 +37,12 @@ router.post("/new", async (req, res) => {
   const { db } = req.app.locals;
 
   const gameId = await findGame(game_title, db);
+  
   const score = {
     player,
     score_date,
     points: +points,
-    gameId: gameId.id,
+    gameId: gameId.id
   };
 
   await addScore(score, db);
@@ -53,7 +55,7 @@ async function findGame(title, db) {
   const sql = `
     SELECT id
         FROM game
-    WHERE game.title ILIKE '%' || $1 || '%'
+    WHERE game.title =$1
   `;
 
   const result = await db.query(sql, [title]);

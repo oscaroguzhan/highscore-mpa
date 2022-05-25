@@ -17,3 +17,14 @@ a {
 input#search {
   width: 65%;
 }
+.brand {
+  background-color: #fff;
+  
+  
+}
+.brandImg{
+  width: 10rem;
+  border-radius: 1rem;
+  
+  
+}

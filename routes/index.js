@@ -5,10 +5,11 @@ var router = express.Router();
 router.get("/", async function (req, res) {
   const db = req.app.locals.db;
 
-  //FIXME: behöver visa högsta score för varje spel (ingen duplets)
-  // ta bort duplets DISTINCT ON
+  // ta bort duplets- DISTINCT ON
   //sortera descending order ORDER BY - DESC
-  // LEFT JOIN make sure that all data from the left table (game) will be display regardless it has a matching entry or not on right table(highscores)
+  // LEFT JOIN make sure that all data from the left table (game) will be display regardless it has a matching entry
+  //or not on right table(highscores)
+  //get top scores for each game
   const sql = `
   SELECT DISTINCT ON (game.title)
                       game.title,

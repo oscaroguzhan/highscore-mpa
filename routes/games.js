@@ -16,7 +16,7 @@ router.get("/:urlSlug", async function (req, res) {
             game.url_slug,
             highscores.player,
             highscores.points,
-    TO_CHAR (highscores.score_date, 'DD-MM-YYYY') AS score_date
+    TO_CHAR (highscores.score_date, 'YYYY-MM-DD') AS score_date
        FROM game
  LEFT JOIN highscores
          ON game.id = highscores.game_id 

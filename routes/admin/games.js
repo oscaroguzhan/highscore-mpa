@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-// GET htpp://localhost:3000/admin/games
+// GET http://localhost:3000/admin/games
 router.get("/", async (req, res) => {
   const { db } = req.app.locals;
 
@@ -14,7 +14,8 @@ router.get("/", async (req, res) => {
 });
 
 // GET http://localhost:3000/admin/games/new
-// här vi gör en ny get anrop för att navigera till sidan admin/games/new
+// här vi gör en ny get anrop för att navigera till
+// sidan admin/games/new
 router.get("/new", async (req, res) => {
   res.render("admin/games/new", {
     title: "Nytt spel",
@@ -32,7 +33,7 @@ router.post("/new", async (req, res) => {
     image_url,
     genre,
     release_date,
-    urlSlug: generateUrlSlug(title),
+    urlSlug: createUrlSlug(title),
   };
 
   const { db } = req.app.locals;
@@ -61,19 +62,18 @@ async function saveGame(game, db) {
     game.image_url,
     game.genre,
     game.release_date,
-    game.urlSlug
+    game.urlSlug,
   ]);
 }
 
-const generateUrlSlug = (title) => 
-title.replace("-", "").replace(" ", "-").toLowerCase();
-;
+const createUrlSlug = (title) =>
+  title.replace("-", "").replace(" ", "-").toLowerCase();
 async function getGames(db) {
   const sql = `
     SELECT id,
            title,
            genre,
-           TO_CHAR (game.release_date, 'DD-MM-YYYY') AS release_date,
+           TO_CHAR (game.release_date, 'YYYY-MM-DD') AS release_date,
            url_slug
       FROM game
   `;

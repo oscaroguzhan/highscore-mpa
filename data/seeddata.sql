@@ -41,9 +41,27 @@ INSERT INTO
     highscores (player, score_date, points, game_id)
 VALUES
     (
-        ' Ozzy',
+        ' Ella',
         '2021-08-12',
         '3402405',
+        1
+    );
+INSERT INTO
+    highscores (player, score_date, points, game_id)
+VALUES
+    (
+        ' Ozzy',
+        '2019-06-18',
+        '3906405',
+        1
+    );
+INSERT INTO
+    highscores (player, score_date, points, game_id)
+VALUES
+    (
+        'Ozzy',
+        '2022-08-12',
+        '1402405',
         1
     );
 
@@ -55,5 +73,14 @@ VALUES
         '2022-02-15',
         '3902405',
         2
+    );
+INSERT INTO
+    highscores (player, score_date, points, game_id)
+VALUES
+    (
+        ' Karin',
+        '2015-04-19',
+        '3582405',
+        1
     );
 
