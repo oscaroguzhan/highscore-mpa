@@ -7,13 +7,14 @@ router.get("/", async function (req, res) {
   //reference till db object
   const db = req.app.locals.db;
   const sql = `
-  SELECT title,
-         genre,
-         TO_CHAR (game.release_date, 'YYYY' ) AS release_date,
-         image_url,
-         url_slug
-    FROM game
-    WHERE title ILIKE '%' || $1 || '%'
+    SELECT  id,
+            title,
+            genre,
+    TO_CHAR (game.release_date, 'YYYY' ) AS release_date,
+            image_url,
+            url_slug
+       FROM game
+      WHERE title ILIKE '%' || $1 || '%'
 
   `;
 

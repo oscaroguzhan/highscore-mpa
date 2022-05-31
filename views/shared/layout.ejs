@@ -24,33 +24,36 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-light navbar-dark">
-      <div class="container justify-content-center m-2">
-        <section>
-          <a href="/" class="brand">
-            <img src="/images/ozzylogo.png" class="brandImg" />
-          </a>
-        </section>
-      </div>
-    </nav>
-    <header class="bg-dark text-light p-5 text-center">
-      <div class="container">
-        <div>
-          <a href="/">
-            <img src="/images/logo.jpeg" alt="logo" />
-          </a>
-          <form
-            action="/search"
-            class="d-flex justify-content-center mt-3 gap-2 align-items-center"
-          >
-            <input
-              type="search"
-              id="search"
-              placeholder="Sök spel"
-              aria-label="Sök spel"
-              class="form-control form-control-lg w-75"
-              name="q"
-            />
+    <div>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="d-flex">
+          <section class="d-flex align-items-center w-100%">
+            <a href="/" class="navbar-brand p-2"
+              >CodeGuru<span class="text-primary">Ozzy</span>
+            </a>
+          </section>
+        </div>
+      </nav>
+      <header class="bg-dark text-light p-5 text-center">
+        <div class="container">
+          <div>
+            <a href="/">
+              <img src="/images/logo.jpeg" alt="logo" />
+            </a>
+
+            <form
+              action="/search"
+              class="d-flex justify-content-center mt-3 gap-2 align-items-center"
+            >
+              <input
+                type="search"
+                id="search"
+                placeholder="Sök spel"
+                aria-label="Sök spel"
+                class="form-control form-control-lg"
+                name="q"
+              />
+            </form>
           </div>
         </div>
       </header>
@@ -58,9 +61,10 @@
       <footer class="bg-dark text-light p-3 text-center">
         <div class="container">
           <a href="https://codeguruozzy.com">
-            <p class="text-white">&copy;CodeGuruOzzy2022</p>
+            <p>&copy;CodeGuruOzzy2022</p>
           </a>
         </div>
       </footer>
+    </div>
   </body>
 </html>

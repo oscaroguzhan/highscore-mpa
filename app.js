@@ -8,15 +8,17 @@ var logger = require("morgan");
 var expressLayouts = require("express-ejs-layouts");
 // pool component från pg biblioteket för att kommunicera med database
 const { Pool } = require("pg");
-const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-
+var gamesRouter = require("./routes/games");
+var searchRouter = require("./routes/search");
 var gamesAdminRouter = require("./routes/admin/games");
 var scoreAdminRouter = require("./routes/admin/score");
-var searchRouter = require("./routes/search");
-var gamesRouter = require("./routes/games");
+const cors = require("cors");
+
+//API
 var gamesApiRouter = require("./routes/api/games");
+
 
 var app = express();
 
@@ -46,14 +48,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use("/", indexRouter);
+app.use("/search", searchRouter);
+app.use("/games", gamesRouter);
 app.use("/admin/games", gamesAdminRouter);
 app.use("/admin/score", scoreAdminRouter);
-app.use("/search", searchRouter);
+
 //API Application Programing interface (möjliggör att kommunicera med backend)
-//vi mappar inkommande förfrågorna till highscoresRouter in i den har vi get som hanterar
-//till inkommande förfrågorna /api/highscores och retunerar till json data
+//vi mappar inkommande förfrågorna till gamesAPIRouter in i den har vi get som hanterar
+//till inkommande förfrågorna /api/games och retunerar till json data
 app.use("/api/games", gamesApiRouter);
-app.use("/games", gamesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

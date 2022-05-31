@@ -12,13 +12,11 @@
   </section>
   <h2 class="text-center mt-5">Highscores</h2>
   <section class="row playersScores">
-    <!-- loopa alla score för spelet-->
-    <!-- kontrollera om det finns en hög poäng när jag skapar nytt spel -->
+    
     <% if(highscores[0].points !== null) { %> 
-      <% let index = 1 %>
       <% highscores.forEach(({player, score_date,points})=> { %>
     <div class="game-scores mb-3 px-3 py-3 d-flex justify-content-between">
-      <p><strong><%=index++ %>. </strong><%= player%>, <%= score_date%></p>
+      <p><%= player%>, <%= score_date%></p>
       <p><%= points%></p>
     </div>
     <% }) %> 
